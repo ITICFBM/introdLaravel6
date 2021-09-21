@@ -16,13 +16,19 @@ Route::get('/', function () {
 });
 
 /* RUTA DE PRODUCTOS */
-Route::get('/product', function () {
+Route::post('/productos', function () {
     return view('producto/produc');
 });
 /* rUTA DESDE FUNTION */
-Route::get('/funrut', function () {
+Route::put('/funrut', function () {
     return "soy un hola mundo desde una ruta";
 });
+/* Ruta de blade */
+/* Route::get('/miprimerl', function () {
+    return view('child')->name('miprimerlayout');
+}); */
 
-
+Route::delete('miprimerl', function () {
+    return "soy una ruta con mame";
+})->name('layout');
 

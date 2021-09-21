@@ -4,14 +4,20 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>DSM-41</title>
+        <title>@yield('title')</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-      
+       
     </head>
     <body>
-    <h1>HOLA MUNDO desde una vista blade  DSM-41</h1>
+    <!-- Section define una secccion de un contenido -->
+    @section('sidebar')
+
+    modifique mi siderbar desde mi layout
+
+    <div class="container">
+    <!-- Yield es utilizada para mostrar contenido de una seccion determinada -->
+         mi contenido desde mi layot master mipag
+
+    </div>
     </body>
 </html>
