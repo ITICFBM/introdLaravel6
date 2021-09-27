@@ -1,5 +1,6 @@
 <?php
 use App\Images;
+/* importamos el modelo a ocupar category Model*/
 use App\Category;
 use App\Article;
 use Illuminate\Database\Seeder;
