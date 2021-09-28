@@ -10,25 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/* RUTA PRINCIPAL */
-Route::get('/', function () {
-    return view('mipag');
-});
 
-/* RUTA DE PRODUCTOS */
-Route::post('/productos', function () {
-    return view('producto/produc');
-});
-/* rUTA DESDE FUNTION */
-Route::put('/funrut', function () {
-    return "soy un hola mundo desde una ruta";
-});
-/* Ruta de blade */
-/* Route::get('/miprimerl', function () {
-    return view('child')->name('miprimerlayout');
-}); */
 
-Route::delete('miprimerl', function () {
-    return "soy una ruta con mame";
-})->name('layout');
+/* USUARIOS */
+/* index lista */
+Route::get('/', 'UserController@index');
+/* store guarda datos en BD */
+Route::post('/users', 'UserController@store')->name('users.store');
+/* Delete elima datos */
+Route::delete('/users/{user}' ,'UserController@delete')->name('users.destroy');
+
 
