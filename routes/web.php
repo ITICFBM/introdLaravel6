@@ -20,4 +20,8 @@ Route::post('/users', 'UserController@store')->name('users.store');
 /* Delete elima datos */
 Route::delete('/users/{user}' ,'UserController@delete')->name('users.destroy');
 
+/* Categorias */
 
+Route::get('/category','CategoryController@index');
+Route::post('/categories','CategoryController@store')->name('category.store');
+Route::delete('/categories/{category}','CategoryController@delete')->name('category.destroy');
