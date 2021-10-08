@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('users.index',[
             'users' => $users
         ]);
-        return csrf_token(); 
+        return back(); 
 
     }
     public function store(){
