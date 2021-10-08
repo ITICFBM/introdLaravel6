@@ -14,12 +14,17 @@ class UserController extends Controller
         return view('users.index',[
             'users' => $users
         ]);
+        return csrf_token(); 
 
     }
     public function store(){
 
     }
-    public function delete(){
+    public function delete(User $user){
+
+        $user->delete();
+
+        return back();
 
     }
 
