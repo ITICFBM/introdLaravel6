@@ -25,6 +25,8 @@ class CreateArticlesTable extends Migration
             $table->integer('img_id')->unsigned();
             $table->foreign('img_id')->references('id')->on('images');
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 
