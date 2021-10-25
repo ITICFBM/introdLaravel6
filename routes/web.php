@@ -29,6 +29,7 @@ Route::delete('/categories/{category}','CategoryController@delete')->name('categ
 
 /* Articulos */
 
+Route::get('/articles','ControllerArticle@index');
 Route::post('/articles','ControllerArticle@store')->name('article.store');
 
 
