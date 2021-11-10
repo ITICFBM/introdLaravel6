@@ -41,14 +41,14 @@
               {{ csrf_field() }} 
                 <label class= "col" for="">Nombre Categoria:</label>
                 <input class="col from-control" type="text" name="name" value="" placeholder="Ingresa Tu Nombre" id="">
-            </div>
-        </div>
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
       </form>
+    </div>
+  </div>
       </div>
     </div>
   </div>
