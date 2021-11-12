@@ -16,9 +16,10 @@
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">Lista De Categorias</h6>
-                  <div class="float-end">                  
+                  <div class="float-end">  
+                    {{-- Button del modal --}}                
                       <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="fas fa-plus-square"></i>
+                        <i class="fas fa-plus-circle"></i>
                       </button>
                   </div>
                 </div>
@@ -38,9 +39,10 @@
           <div class="container">
           <div class="row">
             <form action="{{ route('category.store') }}" method="POST">
+              {{-- generar el token para el envio de dato csrf --}}
               {{ csrf_field() }} 
                 <label class= "col" for="">Nombre Categoria:</label>
-                <input class="col from-control" type="text" name="name" value="" placeholder="Ingresa Tu Nombre" id="">
+                <input class="col from-control" type="text" name="name" placeholder="Deportes">
       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

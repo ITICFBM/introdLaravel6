@@ -14,6 +14,7 @@
     <link href="{{{url('assets/css/nucleo-icons.css')}}}" rel="stylesheet" />
     <link href="{{{url('assets/css/nucleo-svg.css')}}}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
@@ -68,9 +69,9 @@
         var myModal = document.getElementById('myModal')
         var myInput = document.getElementById('myInput')
     
-    myModal.addEventListener('shown.bs.modal', function () {
-      myInput.focus()
-    })
-        </script>
+      myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+      })
+    </script>
 </body>
 </html>
