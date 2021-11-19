@@ -9,6 +9,14 @@
         </button>
       </div>
       @endif
+      @if (session('mesageDelete'))
+      <div class="alert alert-danger alert-dismissible text-white" role="alert">
+        <span class="text-sm"> <a href="javascript:;" class="alert-link text-white">Excelente</a>. {{ session('mesageDelete') }}.</span>
+        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      @endif
     <div class="container-fluid py-4">
         <div class="row">
           <div class="col-12">
@@ -27,12 +35,12 @@
               <div class="card-body px-0 pb-2">
                 <div class="table-responsive p-0">
     <div class="container">
-            <!-- Modal -->
+            <!-- Modal ADD  STAR-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">  
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ingresa Categoria  </h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ingresa  Una Categoria  </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label=""></button>
         </div>
         <div class="modal-body">
@@ -54,6 +62,8 @@
       </div>
     </div>
   </div>
+              <!-- Modal ADD  END  -->
+          
       <div class="row">
         <table class="table align-items-center mb-0">    
             <thead>
@@ -72,18 +82,53 @@
                         <form action="{{ route('category.destroy', $category) }}" method="POST">
                             @method('DELETE')
                             @csrf
+
                             <input 
                             type="submit"
-                            value="Eliminar" 
+                            value="Eliminar"
                             class="btn btn-sm btn-danger"
                             onClick="return confirm('estas seguro  a eliminar el registro?')">
                         </form>
+                           {{-- Button del modal --}}    
+                              {{-- Button del modal --}}                
+                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate">
+                        <i class="fas fa-pencil-alt"></i>
+                      </button>           
+                        
                     </td>
                   </tr>
                   @endforeach
               </tbody>
 
           </table>
+          <!-- Modal ADD  STAR-->
+          <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">  
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Actualizar Categoria  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label=""></button>
+                </div>
+                <div class="modal-body">
+                  <div class="container">
+                  <div class="row">
+                    <form action="{{ route('category.store') }}" method="POST">
+                      {{-- generar el token para el envio de dato csrf --}}
+                      {{ csrf_field() }} 
+                        <label class= "col" for="">Nombre Categoria:</label>
+                        <input class="col from-control" type="text" name="name" placeholder="Deportes">
+              </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+              </div>
+            </div>
+          </div>
+                      <!-- Modal ADD  END  -->
       </div>
   </div> 
     @endsection

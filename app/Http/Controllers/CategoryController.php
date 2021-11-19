@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CategoryController extends Controller
 {
-    public function __construct()
+ /*    public function __construct()
     {
         $this->middleware('auth');
-    }
+    } */
     use SoftDeletes;
     //
     /* vamos a obtener todas las categorua de nuestra base de datos ELOQUEN ORM
@@ -34,11 +34,19 @@ class CategoryController extends Controller
         return redirect('/category')->with('mesage', 'la categoria se ha agregado exitosamente!');
 
     }
+
+    /* Updete Category */
+        public function edit($id){
+            $categery = Category::findOrFaild($id);
+
+            return view('category/', compact('category','user'));
+
+        }
     /* eliminacion de */
     public function delete(Category $category){
 
         $category->delete();
-        return back();
+        return redirect('/category')->with('mesageDelete', 'la categoria se ha eliminado exitosamente!');
 
 
     }

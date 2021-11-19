@@ -27,6 +27,7 @@ Route::delete('/users/{user}' ,'UserController@delete')->name('user.destroy');
 
 Route::get('/category','CategoryController@index');
 Route::post('/categories','CategoryController@store')->name('category.store');
+Route::put('/categories/{$id}','CategoryController@edit')->name('category.edit');
 Route::delete('/categories/{category}','CategoryController@delete')->name('category.destroy');
 
 /* Articulos */
