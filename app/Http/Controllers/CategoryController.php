@@ -18,7 +18,8 @@ class CategoryController extends Controller
         Select * from categories  */
     public function index(){
 
-        $categories = Category::all();
+        $categories = Category::latest()->paginate(10);
+        //return $categories;
         return view('categories.index',[
         'categories'=> $categories
         ]);
@@ -35,11 +36,11 @@ class CategoryController extends Controller
 
     }
 
-    /* Updete Category */
+    /* Update Category */
         public function edit($id){
-            $categery = Category::findOrFaild($id);
+            $category = Category::findOrFaild($id);
 
-            return view('category/', compact('category','user'));
+            return view('/category');
 
         }
     /* eliminacion de */

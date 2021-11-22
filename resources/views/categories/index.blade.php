@@ -79,30 +79,26 @@
                       <td>{{$category->id}}</td>
                       <td>{{$category->name}}</td>
                       <td>
+                        <button type='button' class="btn btn-sm btn-primary"><i class="far fa-eye"></i></button>
+                        <a type="button" href="{{route('category.edit',$category->id) }}" class="btn btn-sm  btn-success" 
+                          data-bs-toggle="modal" data-bs-target="#modalUpdate{{$category->id}}"><i class="fas fa-pen-square"></i></a>
                         <form action="{{ route('category.destroy', $category) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-
-                            <input 
-                            type="submit"
-                            value="Eliminar"
-                            class="btn btn-sm btn-danger"
-                            onClick="return confirm('estas seguro  a eliminar el registro?')">
-                        </form>
-                           {{-- Button del modal --}}    
-                              {{-- Button del modal --}}                
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalUpdate">
-                        <i class="fas fa-pencil-alt"></i>
+                          @method('DELETE')
+                          @csrf
+                        <button type='submit' class="btn btn-sm btn-danger"                  
+                        onClick="return confirm('estas seguro  a eliminar el registro?')">
+                        <i class="far fa-trash-alt"></i>
                       </button>           
-                        
+                    </form>
+
                     </td>
                   </tr>
                   @endforeach
-              </tbody>
+                </tbody>
 
           </table>
-          <!-- Modal ADD  STAR-->
-          <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {{$categories->links()}}         <!-- Modal edit  STAR-->
+          <div class="modal fade" id="modalUpdate{{$category->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">  
                 <div class="modal-header">
@@ -116,7 +112,7 @@
                       {{-- generar el token para el envio de dato csrf --}}
                       {{ csrf_field() }} 
                         <label class= "col" for="">Nombre Categoria:</label>
-                        <input class="col from-control" type="text" name="name" placeholder="Deportes">
+                        <input class="col from-control" type="text" name="name" placeholder="Deportes" value={{$category->name}}>
               </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -128,9 +124,10 @@
               </div>
             </div>
           </div>
-                      <!-- Modal ADD  END  -->
+                      <!-- Modal edit  END  -->
       </div>
   </div> 
+
     @endsection
   
 
