@@ -10,7 +10,7 @@
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">Lista De Articles</h6>
                   <div class="float-end">  
-                    {{-- Button del modal --}}                
+                    {{-- Button del article add --}}                
                       <a type="button" href="article/add" class="btn btn-primary">
                         <i class="fas fa-plus-circle"></i>
                       </a>

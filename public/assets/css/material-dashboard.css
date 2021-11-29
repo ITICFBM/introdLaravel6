@@ -17532,3 +17532,6 @@ pre[class*="language-"] {
     overflow: auto !important; } }
 
 /*# sourceMappingURL=material-dashboard.css.map */
+.inputborder{
+  border-radius: 2px !important;  
+}
