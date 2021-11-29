@@ -32,7 +32,9 @@
 
     @include('Layout/footer')
 
-
+  <script>
+   $(#modalUpdate).show('modal');
+</script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -77,6 +79,7 @@
         myModal.addEventListener('shown.bs.modal', function () {
           myInput.focus()
       })
- 
+      </script>
+
 </body>
 </html>
