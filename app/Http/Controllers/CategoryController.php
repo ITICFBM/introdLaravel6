@@ -37,8 +37,9 @@ class CategoryController extends Controller
     }
 
     /* Update Category */
-        public function edit($id){
+        public function edit( Request $request , $id){
             $category = Category::findOrFaild($id);
+            return $category;
             return view('/category');
 
         }
