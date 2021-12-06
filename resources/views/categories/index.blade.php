@@ -19,6 +19,15 @@
     </button>
   </div>
   @endif
+  @if (session('mesageUpdate'))
+  <div class="alert alert-info alert-dismissible text-white" role="alert">
+    <span class="text-sm"> <a href="javascript:;" class="alert-link text-white">Excelente</a>. {{ session('mesageUpdate')
+      }}.</span>
+    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
   <div class="container-fluid py-4">
     <div class="row">
       <div class="col-12">
@@ -49,11 +58,12 @@
                       <div class="modal-body">
                         <div class="container">
                           <div class="row">
-                            <form action="{{ route('category.store') }}" method="POST">
+                            <form action="{{route('category.store') }}" method="POST">
                               {{-- generar el token para el envio de dato csrf --}}
                               {{ csrf_field() }}
+                              
                               <label class="col" for="">Nombre Categoria:</label>
-                              <input class="col from-control" type="text" name="name" placeholder="Deportes">
+                              <input id= "name" class="col from-control" type="text" name="name" placeholder="Deportes">
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -82,12 +92,10 @@
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
                         <td>
-                          <button type='button' class="btn  btn-primary"><i class="far fa-eye"></i></button>
-
-                          <a href="{{route('category.edit', $category->id)}}" type="button" class="btn btn-success" 
-                            data-bs-toggle="modal" data-bs-target="#modalUpdate{{$category->id}}" data-idUpdate="'.$category->id.'">
-                            <i
-                              class="fas fa-pen-square"></i></a>
+                          <button type="button" class="btn  btn-primary"><i class="far fa-eye"></i></button>
+                          <a href="/categories/{{$category->id}}/edit" class="btn btn-success"><i class="fas fa-pen-square"></i></a>
+                          {{-- <a class="btn btn-success"  data-bs-target="#modalUpdate" data-catid="{{$category->id}}" data-bs-toggle="modal">
+                            <i class="fas fa-pen-square"></i></a> --}}
 
                           <form action="{{ route('category.destroy', $category) }}" method="POST">
                             @method('DELETE')
@@ -106,38 +114,38 @@
                   </table>
                   {{-- renderear el metodo paginate --}}
                   {{$categories->links()}}
-                  <!-- Modal edit  STAR-->
-                  <div class="modal fade" id="modalUpdate{{$category->id}}" tabindex="-1"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <!-- Modal edit  STAR
+                  <div class="modal fade" id="modalUpdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">Actualizar Categoria </h5>
-                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label=""></button>
+                          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                           <div class="container">
                             <div class="row">
-                              <form action="{{ route('category.store') }}" method="POST">
-                                {{$category->id}}
+                              {{$category->id}}
+                              <form  method="POST">
                                 {{-- generar el token para el envio de dato csrf --}}
                                 {{ csrf_field() }}
                                 <label class="col" for="">Nombre Categoria:</label>
-                                <input class="col from-control" type="text" name="name" placeholder="Deportes"
-                                  value={{$category->name}}>
+                                <input id= "name" class="col from-control" type="text" name="name" placeholder="Deportes" value="{{$category->name}}">
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                              <button type="submit" class="btn btn-primary">Guardar</button>
-                            </div>
+                           
                             </form>
                           </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                          <button type="submit" class="btn btn-primary">Guardar</button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <!-- Modal edit  END  -->
+                  Modal edit  END  -->
+
                 </div>
               </div>
 
-              @endsection
+@endsection

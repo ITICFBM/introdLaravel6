@@ -21,12 +21,9 @@
                       <div class="row">
                         <div class="col">
                           <!-- Create the editor container -->
-                          
-                              <div id="editor">
-                                <p>Hello World!</p>
-                                <p>Some initial <strong>bold</strong> text</p>
-                                <p><br></p>
-                              </div>
+                          <div id="editor">.
+                          </div>
+                          <br>
                           {{-- <textarea cols="10" class="col-12 inputborder" placeholder="Leave a comment here" id="floatingTextarea2"
                             style="height: 100px"></textarea> --}}
                         </div>
@@ -40,16 +37,16 @@
                   <div class="card my-4">
                     <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                       <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                        <h6 class="text-white text-capitalize ps-3">Publicar</h6>
+                        <h6 class="text-white text-capitalize ps-3">Ajustes De Publicación</h6>
                       </div>
                       <br>
                       <div class="container">
                           <div class="row justify-content-center">
-                              <div class="col">
-                                <button class="btn btn-primary">Solo Guardar</button>
+                              <div class="col-12 col-sm col-xs">
+                                <button class="btn btn-sm btn-primary">Guardar</button>
                               </div>
-                              <div class="col">
-                                <button class="btn btn-primary"> Vista Previa</button>
+                              <div class="col-12 col-sm col-xs">
+                                <button class="btn btn-sm btn-primary">v.Previa</button>
                               </div>
                           </div>
                       </div>
@@ -84,31 +81,47 @@
                     <div class="card my-4">
                       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                          <h6 class="text-white text-capitalize ps-3">Categoria</h6>
+                          <h6 class="text-white text-capitalize ps-3">Agrega Categoria</h6>
                         </div>
                         <br>
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col">
-                                  <label for="">Agregar Categoria</label>
-                                  <select name="" id="">
+                                  <select class="form-select" aria-label="Default select example">
                                     @foreach ($categories as $category)
-                                    <option value="">{{$category->name}}</option>
+                                    <option name="name" value="">{{$category->name}}</option>
                                     @endforeach
                                   </select>
+                                  <br>
                                 </div>   
                             </div>
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="card my-4">
+                        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                          <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                            <h6 class="text-white text-capitalize ps-3">Imagen Destacada</h6>
+                          </div>
+                          <br>
+                          <div class="container">
+                              <div class="row justify-content-center">
+                                  <div class="col">
+                                    <div id="wrapper">
+                                      <input type="file" accept="image/*" onchange="preview_image(event)">
+                                      <img id="output_image"/>
+                                     </div>                                    <br>
+                                  </div>   
+                              </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
+
             </div>
-          </div>
-          <div id="editor">
-            <p>Hello World!</p>
-            <p>Some initial <strong>bold</strong> text</p>
-            <p><br></p>
           </div>
     @endsection
         

@@ -43,8 +43,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    
- 
+
      <!--   Core JS Files   -->
   <script src={{{url('assets/js/core/popper.min.js')}}}></script>
   <script src={{{url('assets/js/core/bootstrap.min.js')}}}></script>
@@ -61,24 +60,48 @@
         }
       </script>
     <!-- Github buttons -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-       {{-- Modal De Categorias --}}
-       <script>
-         /*SCRIP TOLTIP*/
-         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl)
-        })
-        var myModal = document.getElementById('myModal')
-        var myInput = document.getElementById('myInput')
+  <script>
+    $( document ).ready(function() {
+      $('#modalUpdate').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) 
+      var cat_id = button.data('catid') 
+      var modal = $(this)
+  })
+});
 
-        myModal.addEventListener('shown.bs.modal', function () {
-          myInput.focus()
-        })        
-      </script>
-    
-     
+</script>
+     <script>
+         ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote' ],
+        heading: {
+            options: [
+                { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
+            ]
+        }
+    } )
+    .catch( error => {
+        console.log( error );
+    } );
+</script>
 
+<script type='text/javascript'>
+  function preview_image(event) 
+  {
+   var reader = new FileReader();
+   reader.onload = function()
+   {
+    var output = document.getElementById('output_image');
+    output.src = reader.result;
+   }
+   reader.readAsDataURL(event.target.files[0]);
+  }
+  </script>
 </body>
 </html>
