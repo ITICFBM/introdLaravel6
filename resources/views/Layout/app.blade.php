@@ -90,7 +90,7 @@
         console.log( error );
     } );
 </script>
-
+{{-- vista previa de la imagen --}}
 <script type='text/javascript'>
   function preview_image(event) 
   {

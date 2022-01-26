@@ -36,7 +36,7 @@ Route::delete('/categories/{category}','CategoryController@delete')->name('categ
 Route::get('/articles','ControllerArticle@index');
 Route::get('/article/add','ControllerArticle@create');
 Route::post('/articles','ControllerArticle@store')->name('article.store');
-//Route::get('/articles/{$id}','ControllerArticle@show');
+Route::get('/articles/{id}/show','ControllerArticle@show');
 
 /*  Images */
 
@@ -51,8 +51,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-/*  Email MailTrap */
-Route::get('enviarcorreo', ['as' => 'enviar', function () {
+/*    Email MailTrap 
+ */Route::get('enviarcorreo', ['as' => 'enviar', function () {
 
     $data = ["link" => "https://digital-pineapple.com.mx"];
 
@@ -62,7 +62,7 @@ Route::get('enviarcorreo', ['as' => 'enviar', function () {
 
         $message->to('dsm43@gmail.com')->subject('Este es Mi Primer Correo Con MailTrap  desde Laravel');
 
-    });
+    }); 
 
     return "Se envío el email de manera exitosa";
 }]);

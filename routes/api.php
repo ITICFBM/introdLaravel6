@@ -17,6 +17,6 @@ use Illuminate\Http\Request;
     return $request->user();
 }); */
 
-Route::get('articulos', function(){
+/* Route::get('articulos', function(){
     return "esta es una ruta desde el archivo de api";
-});
+}); */

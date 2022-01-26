@@ -16,14 +16,17 @@ class Article extends Model
         'img',
         'subtitle',
         'body',
-        'category_id',
-        'img_id',
+        'description',
+        'keywords',
+        'category_id'
+
+        
     ];
 
 /* definindo la relacion de article and category one a one */
     public  function category()
     {
-        return $this->hasOne(Category::class,'foreign_key');
+        return $this->hasOne(Category::class, 'category_id');
 
 
     }

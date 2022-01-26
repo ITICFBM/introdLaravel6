@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Article;
 use App\Category;
+use App\Images;
 use Illuminate\Http\Request;
 
 class ControllerArticle extends Controller
@@ -19,7 +20,7 @@ class ControllerArticle extends Controller
     public function index()
     {
 
-        $articles = Article::all();
+        $articles = Article::latest()->paginate(20);
         return view('articles.index',[
             'articles'=> $articles
             ]);
@@ -46,17 +47,16 @@ class ControllerArticle extends Controller
      */
     public function store(Request $request)
     {
-        //
+  
+        $article = Article::create($request->all());
+         //dd ($article);
 
-        Article::create([
-        'title'=>$request->title,
-        'img'=>$request->img,
-        'subtitle'=>$request->subtitle,
-        'body'=>$request->body,
-        'category_id'=>$request->category_id,
-        'img_id'=>$request->img_id
-        ]);
-        return ('el article se dio de alta de manera correcta');
+        if($request->file('img')){
+            $article->img = $request->file('img')->store('dsm41','public');
+            $article->save();
+        }
+   
+        return redirect('articles')->with('mesage','el article se  creo con exito');
     }
 
     /**
@@ -67,14 +67,12 @@ class ControllerArticle extends Controller
      */
     public function show($id)
     {
+
         //obtines el article 
         $article = Article::find($id);
 
-        return $article;
+        return view('Articles.show',["article" => $article]);
 
-        return view('article.show',[
-            '$articel' => $article
-        ]);
 
     }
 

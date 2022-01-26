@@ -8,24 +8,29 @@
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
                   <h6 class="text-white text-capitalize ps-3">Alta De Articulos</h6>
                 </div>
-                              {{-- star colum article  --}}
+             {{-- star colum article  --}}
               <div class="row">
                 <div class="col">
                   <div class="row">
                     <div class="col-12">
-                      <label class="form-label" for="">Agrega Titulo Aqui</label>
-                      <input type="text" class="col-12 inputborder" placeholder="introduce el titulo aqui">
+                      <form action="{{ route('article.store') }}" method="POST" enctype="multipart/form-data">
+                        <label class="form-label" for="">Agrega Titulo Aqui</label>
+                      <input type="text" name="title" class="col-12 inputborder" placeholder="introduce el titulo aqui">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label" for="">Agrega Subtitulo Aqui</label>
+                        <input type="text" name="subtitle" class="col-12 inputborder" placeholder="introduce el titulo aqui">
                     </div>
                   </div>
                   <br>
                       <div class="row">
                         <div class="col">
                           <!-- Create the editor container -->
-                          <div id="editor">.
-                          </div>
+                    
+                          <textarea id="editor" name="body" cols="10" class="col-12 inputborder" placeholder="Leave a comment here" id="floatingTextarea2"
+                            style="height: 100px"></textarea> 
                           <br>
-                          {{-- <textarea cols="10" class="col-12 inputborder" placeholder="Leave a comment here" id="floatingTextarea2"
-                            style="height: 100px"></textarea> --}}
+                      
                         </div>
                       </div>
                     </div>
@@ -43,7 +48,7 @@
                       <div class="container">
                           <div class="row justify-content-center">
                               <div class="col-12 col-sm col-xs">
-                                <button class="btn btn-sm btn-primary">Guardar</button>
+                                <button  type="Submit" class="btn btn-sm btn-primary">Guardar</button>
                               </div>
                               <div class="col-12 col-sm col-xs">
                                 <button class="btn btn-sm btn-primary">v.Previa</button>
@@ -67,11 +72,11 @@
                           <div class="col-12">
                             <label>Igresar tu keyword aqui :</label>
                             <br>
-                            <input type="text" class="col-12 inputborder">
+                            <input type="text" name="keywords" class="col-12 inputborder">
                           </div>
                           <div class="col-12">
                             <label for="">Descripción Seo</label>
-                            <textarea class="col-12"name="" id="" cols="30" rows="10"></textarea>
+                            <textarea class="col-12"name="description" id="" cols="30" rows="10" required></textarea>
                           </div>
                         </div>
                     </div>
@@ -87,9 +92,10 @@
                         <div class="container">
                             <div class="row justify-content-center">
                                 <div class="col">
-                                  <select class="form-select" aria-label="Default select example">
+                                  <select name="category_id" class="form-select" aria-label="Default select example">
+                                    <option>Selecciona Una Categoria</option>
                                     @foreach ($categories as $category)
-                                    <option name="name" value="">{{$category->name}}</option>
+                                    <option  value="{{$category->id}}">{{$category->name}}</option>
                                     @endforeach
                                   </select>
                                   <br>
@@ -109,18 +115,18 @@
                               <div class="row justify-content-center">
                                   <div class="col">
                                     <div id="wrapper">
-                                      <input type="file" accept="image/*" onchange="preview_image(event)">
+                                      <input type="file" name="img" accept="image/*" onchange="preview_image(event)">
                                       <img id="output_image"/>
-                                     </div>                                    <br>
+                                     </div>                                    
+                                     <br>
                                   </div>   
                               </div>
                           </div>
+                        </form>
                         </div>
                       </div>
                     </div>
                   </div>
-
-
             </div>
           </div>
     @endsection

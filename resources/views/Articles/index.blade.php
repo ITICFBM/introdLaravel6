@@ -2,6 +2,15 @@
 @extends('Layout/app')
 @section('content')
 <div class="panel-body">
+  @if (session('mesage'))
+  <div class="alert alert-info alert-dismissible text-white" role="alert">
+    <span class="text-sm"> <a href="javascript:;" class="alert-link text-white">Excelente</a>. {{ session('mesage')
+      }}.</span>
+    <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  @endif
     <div class="container-fluid py-4">
         <div class="row">
           <div class="col-12">
@@ -35,7 +44,7 @@
                     <td>{{$article->id}}</td>
                     <td>{{$article->title}}</td>
                     <td>
-                        <button type='button' class="btn btn-primary"><i class="far fa-eye"></i></button>
+                        <a href="/articles/{{$article->id}}/show" class="btn btn-success">ver</a>
                         <button type='button' class="btn btn-success"><i class="fas fa-pen-square"></i></button>
                         <button type='submit' class="btn btn-danger"
                         onClick="return confirm('estas seguro  a eliminar el registro?')"><i class="far fa-trash-alt"></i></button>
@@ -51,6 +60,8 @@
             </tbody>
 
         </table>
+        {{$articles->links()}}
+
          </div>
     </div> 
 </div> 

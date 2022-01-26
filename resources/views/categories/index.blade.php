@@ -1,5 +1,12 @@
 @extends('Layout/app')
 @section('content')
+@if ($errors->any())
+  @foreach ($errors->all() as $error)
+    <div class="alert alert-danger alert-dismissible text-white" role="alert">
+     <span class="text-sm"> <a href="javascript:;" class="alert-link text-white">{{ $error }}</a></span>
+            @endforeach
+    </div>
+@endif
 <div class="panel-body">
   @if (session('mesage'))
   <div class="alert alert-info alert-dismissible text-white" role="alert">

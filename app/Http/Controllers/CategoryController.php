@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\categoryRequest;
 /* Mandamos a llamar el modelo category */
 use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 class CategoryController extends Controller
 {
     public function __construct()
@@ -27,9 +27,10 @@ class CategoryController extends Controller
 
     }
     /* insertar datos en la tabla category con el metodo create dentro de un array  */
-    public function store(Request $request){
-        Category::create([
-
+    public function store(categoryRequest $request){
+       //$category = $request->all();
+        //$categories = Categories::create($category);
+         Category::create([
             'name'=>$request->name
         ]);
         return redirect('/categories')->with('mesage', 'la categoria se ha agregado exitosamente!');
@@ -45,9 +46,10 @@ class CategoryController extends Controller
         }
         /* Update category */
         public function update(Request $request, $id){
-          /*   $validateData = $request->validate([
+            /* $validateData = $request->validate([
                 'name' => 'required|max:5'
-            ]); */
+            ]); 
+            if (fail) */
             $category = Category::findOrFail($id);
 
             $category->update($request->all());
