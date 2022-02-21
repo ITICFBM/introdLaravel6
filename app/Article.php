@@ -46,5 +46,9 @@ class Article extends Model
    {
        return $this->belongsTo(User::class);
    }
-
+   public function getGetImageAttribute()
+   {
+       if($this->img)
+           return url("storage/$this->img");
+   }
 }

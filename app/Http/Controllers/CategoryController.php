@@ -6,12 +6,13 @@ use App\Http\Requests\categoryRequest;
 use App\category;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
+
 class CategoryController extends Controller
 {
     public function __construct()
-    {
+     {
         $this->middleware(['auth','verified']);
-    } 
+    }  
     use SoftDeletes;
     //
     /* vamos a obtener todas las categorua de nuestra base de datos ELOQUEN ORM
@@ -68,4 +69,8 @@ class CategoryController extends Controller
 
 
     }
+
+    
+
+      
 }

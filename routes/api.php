@@ -20,3 +20,6 @@ use Illuminate\Http\Request;
 /* Route::get('articulos', function(){
     return "esta es una ruta desde el archivo de api";
 }); */
+
+//Route::get('user','ApiuserController@index');
+Route::resource('categories','Api\ApicategoriesController',['except' => ['create', 'edit']]);

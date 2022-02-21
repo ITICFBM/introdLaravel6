@@ -29,8 +29,12 @@
             <div class="table-responsive p-0">
               <div class="container">
                 <div class="row">
-                  <div class="col">
-                    <p>{{$article->subtitle}}</p>
+                  <div class="col-md-12">
+                      @if ($article->img)
+                      <img src="{{$article->get_image}}">
+                    @else($article->img == null)
+                    <img src="https://avalos.sv/wp-content/uploads/default-featured-image.png" class=" center-text img-responsive">
+                    @endif                      
                   </div>
                 </div>
               </div>
